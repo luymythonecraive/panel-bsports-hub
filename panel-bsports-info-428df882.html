@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>b体育 | 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f1f6f9;
+      color: #1c2e3a;
+      line-height: 1.6;
+      padding: 0 16px;
+    }
+
+    .wrapper {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 20px 0 48px;
+    }
+
+    /* 首页横幅 — 杂志封面感 */
+    .hero {
+      background: linear-gradient(145deg, #0b3747 0%, #1a5c6e 80%);
+      border-radius: 28px;
+      padding: 48px 32px 40px;
+      margin-bottom: 48px;
+      color: #e7f3f7;
+      box-shadow: 0 12px 28px rgba(8, 48, 60, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(90, 200, 200, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: -20px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(168, 235, 220, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      border-left: 4px solid #56c8b4;
+      padding-left: 14px;
+      margin-top: 8px;
+      max-width: 70%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .meta {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 18px;
+      border-radius: 30px;
+      color: #c6e3e8;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 网格卡片体系 — 蓝绿点缀 */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 26px 24px 24px;
+      box-shadow: 0 4px 16px rgba(8, 48, 60, 0.04);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid #e4edf0;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(20, 100, 110, 0.08);
+    }
+
+    .card .icon {
+      width: 36px;
+      height: 36px;
+      background: #d3ecec;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 20px;
+      color: #0f5968;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #113e4b;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2b4b57;
+      margin-bottom: 6px;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #e2f3f0;
+      color: #0b6b6b;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      margin-top: 12px;
+    }
+
+    /* 段落区域 — 三段自然介绍 */
+    .narrative {
+      margin: 32px 0 16px;
+    }
+
+    .narrative p {
+      margin-bottom: 22px;
+      font-size: 1.02rem;
+      background: white;
+      padding: 22px 24px;
+      border-radius: 24px;
+      box-shadow: 0 2px 10px rgba(16, 60, 70, 0.02);
+      border-left: 4px solid #52bba8;
+    }
+
+    .narrative a {
+      color: #127a8a;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid #b0d6dc;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .narrative a:hover {
+      border-bottom-color: #127a8a;
+      color: #074b58;
+    }
+
+    /* 特点摘要 — FAQ风格 */
+    .faq-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      margin: 36px 0 40px;
+      padding: 20px 0 8px;
+      border-top: 1px solid #d7e3e6;
+    }
+
+    .faq-item {
+      flex: 1 1 200px;
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      padding: 18px 18px 14px;
+      border-radius: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .faq-item strong {
+      font-weight: 600;
+      color: #115f6b;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .faq-item span {
+      font-size: 0.9rem;
+      color: #365e67;
+    }
+
+    .faq-item .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #52bba8;
+      border-radius: 10px;
+      margin-right: 8px;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 28px 26px;
+      margin: 48px 0 12px;
+      text-align: center;
+      border: 1px solid #d7e9ed;
+      box-shadow: 0 4px 12px rgba(10, 60, 70, 0.02);
+    }
+
+    .footer-note p {
+      font-size: 1rem;
+      color: #1f4450;
+      margin-bottom: 10px;
+    }
+
+    .footer-note .link-line {
+      font-size: 1.1rem;
+    }
+
+    .footer-note a {
+      color: #0f7a8a;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #91ced6;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #0f7a8a;
+      color: #054854;
+    }
+
+    .footer-note .small-note {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: #6a8d96;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero .sub {
+        max-width: 90%;
+        font-size: 1rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .narrative p {
+        padding: 18px 18px;
+      }
+      .faq-item {
+        flex: 1 1 100%;
+      }
+      .footer-note {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .grid {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- 首页横幅 -->
+  <header class="hero">
+    <h1>b体育</h1>
+    <div class="sub">稳定访问 · 信息聚合 · 基于 panel 的管理视图</div>
+    <div class="meta">杂志专题 · 入口说明</div>
+  </header>
+
+  <!-- 杂志专题：背景 + 稳定入口说明 -->
+  <section class="narrative">
+    <p>
+      平台入口的可靠性直接影响日常信息获取效率。对于长期关注 <a href="https://panel-bsports.com">b体育</a> 动态的用户而言，一个稳定的访问路径与清晰的页面结构同样关键。本专题从入口稳定性与页面功能说明两个维度，归纳平台的使用视角。
+    </p>
+    <p>
+      b体育 所依托的 panel‑bsports 域提供了整合式浏览界面，支持多模块并行展示。无论是赛事摘要、实时数据还是信息索引，均可在同一面板环境中快速定位。该体系减少了跳转层级，尤其适合需要高信息密度的阅读场景。
+    </p>
+    <p>
+      同时，平台在页面响应与资源加载方面保持了较为稳定的表现，降低了因网络波动而中断浏览的概率。理解面板布局与刷新机制，有助于更高效地使用 <a href="https://panel-bsports.com">b体育</a> 所提供的各项功能模块。
+    </p>
+  </section>
+
+  <!-- 网格卡片：三块特点 + 一块场景 -->
+  <div class="grid">
+    <div class="card">
+      <div class="icon">📋</div>
+      <h3>面板式布局</h3>
+      <p>栏目以卡片网格组织，标题、摘要、链接区分清晰，支持快速纵向浏览。</p>
+      <span class="tag">信息层级</span>
+    </div>
+    <div class="card">
+      <div class="icon">🔗</div>
+      <h3>持续可访问</h3>
+      <p>域名解析与服务器响应保持在合理范围，降低中断频次，适合日常参考。</p>
+      <span class="tag">稳定性</span>
+    </div>
+    <div class="card">
+      <div class="icon">🧩</div>
+      <h3>模块化索引</h3>
+      <p>功能区块各自独立，支持按需提取内容，减少无关信息干扰。</p>
+      <span class="tag">浏览效率</span>
+    </div>
+    <div class="card">
+      <div class="icon">📱</div>
+      <h3>移动端适配</h3>
+      <p>面板在手机与平板设备上重新排列，保持可读性，便于随时查看。</p>
+      <span class="tag">响应式</span>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要形式 — 蓝绿点缀 -->
+  <div class="faq-summary">
+    <div class="faq-item">
+      <strong><span class="dot"></span>访问方式</strong>
+      <span>通过浏览器直接访问 <a href="https://panel-bsports.com" style="color:#0f7a8a;border-bottom:1px solid #b0d6dc;text-decoration:none;">b体育</a> 面板，无需额外工具。</span>
+    </div>
+    <div class="faq-item">
+      <strong><span class="dot"></span>内容更新</strong>
+      <span>页面数据由平台侧维护，刷新面板即可获取最新栏目信息。</span>
+    </div>
+    <div class="faq-item">
+      <strong><span class="dot"></span>兼容性</strong>
+      <span>主流浏览器均支持，建议保持系统及浏览器为较新版本。</span>
+    </div>
+    <div class="faq-item">
+      <strong><span class="dot"></span>推荐操作</strong>
+      <span>将面板加入书签，便于日常快速调用。</span>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <footer class="footer-note">
+    <p class="link-line">
+      如需直接进入面板，可使用 <a href="https://panel-bsports.com">b体育</a> 域名访问资源索引界面。
+    </p>
+    <span class="small-note">本页为说明性专题，实际内容以面板页面为准。</span>
+  </footer>
+
+</div>
+</body>
+</html>
